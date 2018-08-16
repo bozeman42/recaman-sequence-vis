@@ -1,0 +1,4 @@
+# Recamán's Sequence Visualization
+Another [Numberphile video](https://www.youtube.com/watch?v=FGC5TdIiT9U) inspired visualization. This is based on Recamán's Sequence. The process as I understand it is this: start at 0. The interval size starts at 1. Now, if you can go back without going to a number already in the sequence or going below 0, go back the interval size, otherwise go forward the interval size. Then add one to the interval size and repeat. Go on like this forever.
+
+This visualization has a slider that allows you to display the visualization of between 0 and 300 iterations of the sequence on a numberline with semicircles connecting each member to the next. You can also click the canvas to increment the series by one.

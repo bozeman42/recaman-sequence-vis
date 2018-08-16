@@ -8,7 +8,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="my-canvas"></canvas>
+  <div>
+    <input id="iteration-slider" type="range" min="0" value="0" max="300" />
+    <p>Iteration:<span id="iteration-counter"></span></p>
+  </div>
+  <div>
+    <canvas id="my-canvas"></canvas>
+  </div>
   <script src="client.js"></script>
 </body>
 </html>
