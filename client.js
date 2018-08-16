@@ -1,4 +1,4 @@
-const UNIT_RADIUS = 5
+let unitSizeInPixels = 5
 
 class Recaman {
   constructor(ctx, canvas) {
@@ -10,12 +10,12 @@ class Recaman {
     this.iteration = 0;
   }
 
-  get UNIT_RADIUS() {
-    return UNIT_RADIUS;
+  get unitSizeInPixels() {
+    return unitSizeInPixels;
   }
 
   get currentPos() {
-    return this.currentSeq * this.UNIT_RADIUS;
+    return this.currentSeq * this.unitSizeInPixels;
   }
 
   reset() {
@@ -48,7 +48,7 @@ class Recaman {
   draw(iterations = 1) {
     for (let i = 0; i < iterations; i++) {
       const ctx = this.ctx
-      const radius = (this.nextJumpSize / 2) * this.UNIT_RADIUS;
+      const radius = (this.nextJumpSize / 2) * this.unitSizeInPixels;
       console.log('radius', radius);
       let center = this.findNextCenter(radius);
       let start = 0;
@@ -92,8 +92,8 @@ let nextJumpSize = 1
 let recaman = new Set([0]);
 
 const canvas = document.querySelector('#my-canvas')
-canvas.height = 1000;
-canvas.width = 1500;
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
 const ctx = canvas.getContext('2d')
 const vis = new Recaman(ctx, canvas);
 
@@ -101,6 +101,13 @@ const slider = document.querySelector('#iteration-slider');
 slider.oninput = e => {
   vis.reset();
   vis.draw(e.target.value)
+}
+
+const radInput = document.querySelector('#radius-size');
+radInput.oninput = e => {
+  unitSizeInPixels = parseInt(e.target.value);
+  vis.reset();
+  vis.draw(slider.value);
 }
 
 canvas.onclick = e => {
